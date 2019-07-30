@@ -9,7 +9,7 @@ node(){
                      case 'Master':
                         echo "Master Branch"
                         checkoutGitlab('TSAR')
-
+						executeBuildCommands()
                  }
 	}
 }
@@ -31,4 +31,13 @@ def checkoutGitlab(branch){
 			)
 
     }
+}
+
+def executeBuildCommands(){
+	stage("Buid process"){
+		sh "sudo chmod -R 777 /opt/jenkins/workspace"
+		//for (int i = 0; i < projects.size(); i++) {
+			sh "( cd ${workspace}/testPipeline ; mvn clean install -U )"
+		//}
+	}
 }
