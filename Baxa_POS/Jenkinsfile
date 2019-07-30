@@ -2,10 +2,10 @@ node(){
     echo "===================================Environment variables starts==================================="
 		sh "env"
 	echo "===================================Environment variables ends==================================="
-    switch(env.gitlabActionType) {
+    switch('PUSH') {
 		case 'PUSH':
                  echo "===================================PUSH event starts==================================="
-                 switch(env.gitlabTargetBranch){
+                 switch('Master'){
                      case 'Master':
                         echo "Master Branch"
                         checkoutGitlab('TSAR')
